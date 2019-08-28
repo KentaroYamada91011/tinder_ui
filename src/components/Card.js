@@ -3,11 +3,6 @@ import Hammer from 'react-hammerjs'
 import './Card.scss';
 import Loader from 'react-loader-spinner'
 import { People, SWIPED_DISTANCE } from '../common/constant';
-import Fujita from '../images/fujita_nikoru.jpg'
-import Komatsu from '../images/komatsu_nana.png'
-import Ayaka from '../images/ayaka.jpg'
-import Mei from '../images/mei.jpg'
-import Yuko from '../images/yuko.jpg'
 
 /**
  * カードのコンポーネント
@@ -49,14 +44,14 @@ export default class Card extends React.Component {
     if (e.deltaX <= -1 * SWIPED_DISTANCE / 2) {
       this.props.changeCardState({
         opened : true,
-        deltaX : -4 * SWIPED_DISTANCE,
+        deltaX : -3.5 * SWIPED_DISTANCE,
         deltaY : 0,
       })
     // SWIPED_DISTANCE px の半分の動きがあれば、右にスワイプ
     } else if (e.deltaX >= 1 * SWIPED_DISTANCE / 2) {
       this.props.changeCardState({
         opened : true,
-        deltaX : 4 * SWIPED_DISTANCE,
+        deltaX : 3.5 * SWIPED_DISTANCE,
         deltaY : 0,
       })
     // スワイプ量が少なければ、opened状態はそのまま
@@ -147,7 +142,7 @@ export default class Card extends React.Component {
     // スワイプの量に合わせて、要素の位置を変更
     let frontStyle = {
       transform : `translate(${this.props.deltaX}px, ${this.props.deltaY}px)`,
-      transitionDuration: `${this.props.opened === true ? '0.3s'  : '0s'}`,
+      transitionDuration: `${this.props.opened === true ? '0.5s'  : '0s'}`,
     };
     console.log("render されたよ")
     return (

@@ -1,6 +1,6 @@
 .card__field {
   position: relative;
-  height: 600px;
+  height: 550px;
 }
 
 @keyframes show{
@@ -15,7 +15,7 @@
 .card {
   position: absolute;
   width: -webkit-fill-available;
-  height: 600px;
+  height: 550px;
   margin: auto;
   border-radius: 15px;
   background-color: #fff;  
@@ -57,7 +57,7 @@
 
   img {
     width: 100%;
-    height: 600px;
+    height: 550px;
     border-radius: 15px;
     object-fit: cover;
     pointer-events: none;
