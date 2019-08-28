@@ -80,22 +80,6 @@ export default class App extends React.Component {
     }
   }
 
-  async shouldComponentUpdate(nextProps, nextState) {
-    // if (nextState.opened === false) {
-    //   const img = new Image();
-    //   const src = nextState.swipeCard.image_url;
-    //   img.src = src // ここでプリロードが始まる
-    //   // const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
-    //   // await sleep(500000);
-    //   // console.log('newxt state');
-    //   // img.onload = () => { // 読み込み完了時に発火する関数
-    //   return true;
-    // } else {
-    //   console.log("始めだけ");
-    //   return false;
-    // }
-  }
-
   render() {
     return (
       <div className="App">
