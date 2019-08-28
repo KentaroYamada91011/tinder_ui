@@ -3,6 +3,11 @@ import Hammer from 'react-hammerjs'
 import './Card.scss';
 import Loader from 'react-loader-spinner'
 import { People, SWIPED_DISTANCE } from '../common/constant';
+import Fujita from '../images/fujita_nikoru.jpg'
+import Komatsu from '../images/komatsu_nana.png'
+import Ayaka from '../images/ayaka.jpg'
+import Mei from '../images/mei.jpg'
+import Yuko from '../images/yuko.jpg'
 
 /**
  * カードのコンポーネント
@@ -44,14 +49,14 @@ export default class Card extends React.Component {
     if (e.deltaX <= -1 * SWIPED_DISTANCE / 2) {
       this.props.changeCardState({
         opened : true,
-        deltaX : -3 * SWIPED_DISTANCE,
+        deltaX : -4 * SWIPED_DISTANCE,
         deltaY : 0,
       })
     // SWIPED_DISTANCE px の半分の動きがあれば、右にスワイプ
     } else if (e.deltaX >= 1 * SWIPED_DISTANCE / 2) {
       this.props.changeCardState({
         opened : true,
-        deltaX : 3 * SWIPED_DISTANCE,
+        deltaX : 4 * SWIPED_DISTANCE,
         deltaY : 0,
       })
     // スワイプ量が少なければ、opened状態はそのまま
@@ -66,20 +71,9 @@ export default class Card extends React.Component {
 
   // アニメーション終了時
   async onTransitionEnd() {
-    this.a = "aaaaa";
-    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
-    const img = new Image();
-    const src = this.props.backCardImageUrl
-    img.src = await src // ここでプリロードが始まる
-    console.log('transitionend');
-    // console.log(this.state.render);
-    // await sleep(1000);
-    // console.log(this.state.render);
-    console.log('カードを変えた');
     await this.setState({render: false});
-    console.log(this.state.render);
     await this.changeCardPerson();
-    await sleep(1000);
+    // カードを初期状態に戻す
     if (this.props.opened === true) {
       this.props.changeCardState({
         opened : false,
@@ -87,9 +81,30 @@ export default class Card extends React.Component {
         deltaY : 0
       });
     }
-    await this.setState({render: true});
-    await sleep(2000);
-    console.log(this.state.render);
+    let img = new Image();;
+    img.src = this.props.swipeCardImageUrl;
+    img.onload = () => { // 読み込み完了時に発火する関数
+      this.setState({render: true});
+    }
+  }
+
+  // カードの移動後に2枚目のカードのstateを一枚目に渡し、ランダムで2枚目のカードを選ぶ
+  async changeCardPerson() {
+    const peopleArray = People;
+    // 前のカードを定義
+    const firstPerson = {
+      id: this.props.backCardId,
+      name: this.props.backCardName,
+      age: this.props.backCardAge,
+      description: this.props.backCardDescription,
+      image_url: this.props.backCardImageUrl,
+    };
+    
+    // 後ろのカードで選ばれている人を除いた配列から、後ろのカードの人物を定義
+    const filteredPeopleArray = await peopleArray.filter((e) => e.id !== this.props.backCardId);
+    const secondRandomNumber = Math.floor( Math.random() * (peopleArray.length - 1));
+    const secondPerson = filteredPeopleArray[secondRandomNumber];
+    this.props.changePersonState(firstPerson, secondPerson);
   }
 
   // popUpを表示
@@ -118,36 +133,9 @@ export default class Card extends React.Component {
     // ローダーの削除
     document.querySelector('.loader').remove();
   }
-  
 
-  // カードの移動後に2枚目のカードのstateを一枚目に渡し、ランダムで2枚目のカードを選ぶ
-  async changeCardPerson() {
-    const peopleArray = People;
-    // const img = new Image();
-    // const src = this.props.backCardImageUrl
-    // img.src = await src // ここでプリロードが始まる
-    // 前のカードを定義
-    const firstPerson = {
-      id: this.props.backCardId,
-      name: this.props.backCardName,
-      age: this.props.backCardAge,
-      description: this.props.backCardDescription,
-      image_url: this.props.backCardImageUrl,
-    };
-    
-    // 後ろのカードで選ばれている人の id 以外をランダムに取得し、後ろのカードの人物を定義
-    const filteredPeopleArray = await peopleArray.filter((e) => e.id !== this.props.backCardId);
-    const secondRandomNumber = Math.floor( Math.random() * (peopleArray.length - 1));
-    const secondPerson = filteredPeopleArray[secondRandomNumber];
-    // const img2 = new Image();
-    // const src2 = secondPerson.image_url
-    // img2.src = await src2 // ここでプリロードが始まる
-    // console.log(img2);
-    this.props.changePersonState(firstPerson, secondPerson);
-  }
-
+  // render タイミングの制御
   shouldComponentUpdate(nextProps, nextState) {
-    // console.log(nextProps.opened);
     if (nextState.render === true) {
       return true;
     } else {
@@ -156,13 +144,12 @@ export default class Card extends React.Component {
   }
 
   render() {
-    // スワイプ量に合わせて、要素の位置を変更
+    // スワイプの量に合わせて、要素の位置を変更
     let frontStyle = {
       transform : `translate(${this.props.deltaX}px, ${this.props.deltaY}px)`,
-      transitionDuration: `${this.props.opened === true ? '0.5s'  : '0s'}`
+      transitionDuration: `${this.props.opened === true ? '0.3s'  : '0s'}`,
     };
-    // console.log(frontStyle);
-    // console.log(this.props.swipeCardImageUrl);
+    console.log("render されたよ")
     return (
       <>
         <div className="popUp">
@@ -183,7 +170,7 @@ export default class Card extends React.Component {
             height={100}
             width={100}
           />
-          <div className="card card__back">
+          <div className="card card__back" >
             <div className="card__hero">
             <img src={this.props.backCardImageUrl} alt=""/>
             </div>

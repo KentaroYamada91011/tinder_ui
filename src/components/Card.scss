@@ -3,9 +3,18 @@
   height: 600px;
 }
 
+@keyframes show{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+
 .card {
   position: absolute;
-  width: 400px;
+  width: -webkit-fill-available;
   height: 600px;
   margin: auto;
   border-radius: 15px;
@@ -40,6 +49,10 @@
       font-size: 24px;
       font-weight: 500;
     }
+
+    &__back {
+      animation: show 1s linear 0s;
+    }
   }
 
   img {
@@ -55,7 +68,7 @@
   position: fixed;
   display: none;
   height: 668px;
-  width: 400px;
+  max-width: 400px;
   background-color: #fff; 
   box-shadow: 0 2px 5px 2px rgba(0,0,0,0.08); 
   z-index: 2;  
@@ -102,4 +115,5 @@
 
 .fadeIn {
   display: block;
+  width: -webkit-fill-available;
 }

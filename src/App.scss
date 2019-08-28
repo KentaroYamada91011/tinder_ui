@@ -1,4 +1,13 @@
+@keyframes show{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
 .App {
   max-width: 400px;
-  margin: auto;
+  margin: 8px auto;
+  animation: show 1s linear 0s;
 }
