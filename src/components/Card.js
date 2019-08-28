@@ -1,7 +1,6 @@
 import React from 'react';
 import Hammer from 'react-hammerjs'
 import './Card.scss';
-import Loader from 'react-loader-spinner'
 import { People, SWIPED_DISTANCE } from '../common/constant';
 
 /**
@@ -16,8 +15,6 @@ export default class Card extends React.Component {
   }
   // 指でのドラッグが始まった時
   onPanStart(e) {
-    console.log(this.props.backCardId);
-    console.log("タッチスタート");
     // 最初のCardの位置
     this.props.changeCardState({
       opened : false,
@@ -78,12 +75,13 @@ export default class Card extends React.Component {
     }
     let img = new Image();;
     img.src = this.props.swipeCardImageUrl;
-    img.onload = () => { // 読み込み完了時に発火する関数
+    // 画像の読み込み後に render メソッド発火
+    img.onload = () => {
       this.setState({render: true});
     }
   }
 
-  // カードの移動後に2枚目のカードのstateを一枚目に渡し、ランダムで2枚目のカードを選ぶ
+  // カードの移動後に2枚目のカードの stateを 1枚目に渡し、ランダムで2枚目のカードを選ぶ
   async changeCardPerson() {
     const peopleArray = People;
     // 前のカードを定義
@@ -102,12 +100,12 @@ export default class Card extends React.Component {
     this.props.changePersonState(firstPerson, secondPerson);
   }
 
-  // popUpを表示
+  // popUp を表示
   popUpShow() {
     document.querySelector(".popUp").classList.add("fadeIn");
   }
 
-  // popUpを非表示
+  // popUp を非表示
   popUpClose() {
     console.log('popup succes');
     document.querySelector(".popUp").classList.remove("fadeIn");
@@ -125,8 +123,6 @@ export default class Card extends React.Component {
     const secondPerson = filteredPeopleArray[secondRandomNumber];
     // カードに選ばれている人の状態を変更
     this.props.changePersonState(firstPerson, secondPerson);
-    // ローダーの削除
-    document.querySelector('.loader').remove();
   }
 
   // render タイミングの制御
@@ -144,7 +140,6 @@ export default class Card extends React.Component {
       transform : `translate(${this.props.deltaX}px, ${this.props.deltaY}px)`,
       transitionDuration: `${this.props.opened === true ? '0.5s'  : '0s'}`,
     };
-    console.log("render されたよ")
     return (
       <>
         <div className="popUp">
@@ -158,13 +153,6 @@ export default class Card extends React.Component {
           </div>
         </div>
         <div className="card__field">
-          <Loader
-            className="loader"
-            type="Puff"
-            color="#FF5864"
-            height={100}
-            width={100}
-          />
           <div className="card card__back" >
             <div className="card__hero">
             <img src={this.props.backCardImageUrl} alt=""/>

@@ -14,13 +14,13 @@ import Yuko from './images/yuko.jpg'
 export default class App extends React.Component {
   constructor() {
     super();
-    // 初期状態を定義します
+    // 初期状態を定義
     this.state = {
+      // スワイプされているかどうか
       opened : false,
-      // 指で動かしている時の移動距離.
+      // 指で動かしている時の移動距離
       deltaX: 0,
       deltaY: 0,
-      // スワイプされた状態の場合にtrue.
       swipeCard: {
         id: '',
         name: '',
@@ -62,7 +62,7 @@ export default class App extends React.Component {
     this.setState(
       {
         opened : value.opened,
-        // 指で動かしている時の移動距離.
+        // 指で動かしている時の移動距離を変更
         deltaX: value.deltaX,
         deltaY: value.deltaY,
       }
@@ -74,9 +74,9 @@ export default class App extends React.Component {
     const images = [Fujita, Komatsu, Ayaka, Mei, Yuko];
     let src;
     for (let i = 0; i < images.length; i++){
-      src = images[i]
+      src = images[i];
       img.src = src;
-      console.log(images[i])
+      console.log(images[i]);
     }
   }
 
