@@ -2,19 +2,20 @@
   "name": "tinder_ui",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://KentaroYamada91011.github.io/tinder_ui",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hammerjs": "1.0.1",
     "react-loader-spinner": "3.1.2",
-    "react-scripts": "3.1.1",
-    "homepage" : "http://KentaroYamada91011.github.io/tinder_ui"
+    "react-scripts": "3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy" : "npm run build&&gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
