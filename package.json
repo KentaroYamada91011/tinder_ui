@@ -7,7 +7,8 @@
     "react-dom": "^16.9.0",
     "react-hammerjs": "1.0.1",
     "react-loader-spinner": "3.1.2",
-    "react-scripts": "3.1.1"
+    "react-scripts": "3.1.1",
+    "homepage" : "http://KentaroYamada91011.github.io/tinder_ui"
   },
   "scripts": {
     "start": "react-scripts start",
