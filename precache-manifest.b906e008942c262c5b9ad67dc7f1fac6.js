@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "190059c887aaaff8d923742801f068ec",
+    "revision": "a0e177a6f57a08942ba846ba873fbf56",
     "url": "/tinder_ui/index.html"
   },
   {
-    "revision": "e59e4b1e20b32a88013e",
-    "url": "/tinder_ui/static/css/main.e72b8982.chunk.css"
+    "revision": "79b0e1fa2f57598e2cd1",
+    "url": "/tinder_ui/static/css/main.bf2bd622.chunk.css"
   },
   {
-    "revision": "5fdb7f4b018eab89dd46",
-    "url": "/tinder_ui/static/js/2.52948259.chunk.js"
+    "revision": "78c8f7395636c1de5d52",
+    "url": "/tinder_ui/static/js/2.5acb6443.chunk.js"
   },
   {
-    "revision": "e59e4b1e20b32a88013e",
-    "url": "/tinder_ui/static/js/main.4267a0b7.chunk.js"
+    "revision": "79b0e1fa2f57598e2cd1",
+    "url": "/tinder_ui/static/js/main.20d99e0a.chunk.js"
   },
   {
-    "revision": "58734a802e6025d21804",
-    "url": "/tinder_ui/static/js/runtime~main.a4ebf1c7.js"
+    "revision": "6d1da9c6ae3cf9149401",
+    "url": "/tinder_ui/static/js/runtime~main.c52ed95d.js"
   },
   {
     "revision": "72c25d522d4dc19669509218910d5b37",
