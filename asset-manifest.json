@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8914a4f2.chunk.css",
+    "main.js": "/static/js/main.4cd94fbb.chunk.js",
+    "main.js.map": "/static/js/main.4cd94fbb.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.9fdd2f5b.js",
+    "runtime~main.js.map": "/static/js/runtime~main.9fdd2f5b.js.map",
+    "static/js/2.9e200f84.chunk.js": "/static/js/2.9e200f84.chunk.js",
+    "static/js/2.9e200f84.chunk.js.map": "/static/js/2.9e200f84.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a4b70998901ea910bdf78bf1db06ecf4.js": "/precache-manifest.a4b70998901ea910bdf78bf1db06ecf4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.8914a4f2.chunk.css.map": "/static/css/main.8914a4f2.chunk.css.map",
+    "static/media/ayaka.jpg": "/static/media/ayaka.72c25d52.jpg",
+    "static/media/fujita_nikoru.jpg": "/static/media/fujita_nikoru.edaf98d1.jpg",
+    "static/media/komatsu_nana.png": "/static/media/komatsu_nana.d244ae81.png",
+    "static/media/yuko.jpg": "/static/media/yuko.949a5f9e.jpg"
+  }
+}
